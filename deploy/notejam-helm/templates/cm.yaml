@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notejam-config
+  labels:
+    app.kubernetes.io/name: notejam
+data:
+  DB_DRIVER: mysql
+  DB_HOST: mysql.database.svc.cluster.local
+  DB_NAME: notejam

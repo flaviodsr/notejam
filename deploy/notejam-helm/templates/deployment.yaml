@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notejam-app
+  labels:
+    app.kubernetes.io/name: notejam
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: notejam
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: notejam
+    spec:
+      containers:
+        - name: notejam-app
+          image: ghcr.io/flaviodsr/notejam:tag
+          envFrom:
+            - secretRef:
+                name: db-creds
+            - configMapRef:
+                name: notejam-config
+          ports:
+            - containerPort: 80
+              name: http
+          resources:
+            limits:
+              cpu: 300m
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 128Mi

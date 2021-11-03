@@ -1,0 +1,6 @@
+apiVersion: v2
+type: application
+name: notejam
+description: NoteJam App
+appVersion: 0.1
+version: 0.1

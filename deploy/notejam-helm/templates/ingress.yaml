@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: notejam-app
+  labels:
+    app.kubernetes.io/name: notejam
+spec:
+  tls:
+    - hosts:
+        - notejam.domain
+      secretName: notejam-tls
+  rules:
+    - host: notejam.domain
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: bmrg-flow-services-workflow
+                port:
+                  name: bmrg-port-svc

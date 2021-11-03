@@ -1,0 +1,20 @@
+---
+ingress:
+  enabled: true
+  tls:
+    enabled: true
+    certSource: auto
+  hosts: test.notejam.domain
+  annotations: {}
+
+databases:
+  sqlite:
+    enabled: false
+    path: /data/
+  mysql:
+    enabled: true
+    host: test-db.notejam.domain
+
+image:
+  repository: ghcr.io/flaviodsr/notejam
+  tag: v0.2-test

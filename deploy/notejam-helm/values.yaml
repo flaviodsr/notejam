@@ -1,0 +1,22 @@
+---
+ingress:
+  enabled: false
+  tls:
+    enabled: true
+    certSource: auto
+  hosts: [""]
+  annotations: {}
+
+databases:
+  sqlite:
+    enabled: true
+    path: /data/
+  mysql:
+    enabled: false
+    host: ""
+    username: ""
+    password: ""
+
+image:
+  repository: ghcr.io/flaviodsr/notejam
+  tag: latest
